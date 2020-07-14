@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { ThreadComponent } from './components/thread/thread.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { UserComponent } from './components/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -14,8 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     ForumComponent,
     ThreadComponent,
-    CommentComponent,
-    UserComponent
+    CommentComponent
   ],
   imports: [
     BrowserModule,
