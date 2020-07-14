@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ThreadService } from '@services/thread.service';
+import { Thread } from '@models/thread.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ThreadFormComponent } from '../thread-form/thread-form.component';
 
 @Component({
   selector: 'app-forum',
@@ -7,11 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForumComponent implements OnInit {
 
-  public threads = [1, 1, 1];
+  public threads: Thread[] = [];
 
-  constructor() { }
+  constructor(private threadService: ThreadService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.threadService.Threads.subscribe((threads) => {
+      this.threads = threads;
+    });
+  }
+
+  public openAddThreadDialog = (): void => {
+    const threadDialog = this.dialog.open(ThreadFormComponent);
   }
 
 }

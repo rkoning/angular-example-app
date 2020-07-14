@@ -1,5 +1,10 @@
 <p>forum works!</p>
 
-<div *ngFor="let thread of threads">
-  <app-thread></app-thread>
+<div>
+  <div *ngFor="let thread of threads">
+    <app-thread-card [thread]="thread"></app-thread-card>
+  </div>
 </div>
+
+<button class="mat-raised-button mat-primary" 
+  (click)="openAddThreadDialog()">New Thread</button>

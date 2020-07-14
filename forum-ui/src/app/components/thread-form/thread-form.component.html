@@ -1,0 +1,21 @@
+<form [formGroup]="threadForm">
+  <h3 mat-dialog-title>New Thread</h3>
+  <mat-dialog-content>
+    <mat-form-field class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>User name</mat-label>
+      <input matInput formControlName="user">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Content</mat-label>
+      <textarea formControlName="text" matInput></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button class="mat-raised-button mat-button-base" [mat-dialog-close]="true">Cancel</button>
+    <button class="mat-raised-button mat-button-base mat-primary" (click)="addThread()">Post</button>
+  </mat-dialog-actions>
+</form>
