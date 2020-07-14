@@ -1,5 +1,7 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/DataDog/zstd v1.4.4/go.mod h1:1jcaCB/ufaK+sKp1NBhlGmpz41jOoPQ35bpF36t7BBo=
+github.com/bitly/go-simplejson v0.5.0 h1:6IH+V8/tVMab511d5bn4M7EwGXZf9Hj6i2xSwkNEM+Y=
+github.com/bitly/go-simplejson v0.5.0/go.mod h1:cXHtHw4XUPsvGaxgjIAn8PhEWG9NfngEKAMDJEczWVA=
 github.com/cavdy-play/go_db v0.0.0-20200119001631-7bb67a6cf354/go.mod h1:bePBVHL6b4K9Ps4QPXxufpvF+Yv8jY4h/XnwXjUZIZg=
 github.com/cavdy-play/go_mongo v0.0.0-20200121025021-2400cf8d1082 h1:dI3H3V0rkSBgvKAD8uFfTTMOPZJs485BJKvwyys/BcE=
 github.com/cavdy-play/go_mongo v0.0.0-20200121025021-2400cf8d1082/go.mod h1:lD4upk5yCM9kPvI7umTOnmak5s3k0/ByDIJbNOkTqaM=
