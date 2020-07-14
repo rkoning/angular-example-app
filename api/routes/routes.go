@@ -8,7 +8,7 @@ import (
 
 // Routes handles all the routes
 func Routes(r *mux.Router) {
-	r.HandleFunc("/", controllers.GetAPIHandler).Methods("GET").Schemes("http")
+	r.HandleFunc("/threads", controllers.GetAllThreads).Methods("GET").Schemes("http")
 	r.HandleFunc("/", controllers.PostAPIHandler).Methods("POST").Schemes("http")
 	r.HandleFunc("/", controllers.PutAPIHandler).Methods("Put").Schemes("http")
 	r.HandleFunc("/", controllers.DeleteAPIHandler).Methods("DELETE").Schemes("http")

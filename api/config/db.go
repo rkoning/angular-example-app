@@ -13,8 +13,8 @@ import (
 
 // Connect is used to connect to the database
 func Connect() {
-	// Database Config
-	clientOptions := options.Client().ApplyURI("mongodb://user:password@host:port/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true")
+	// Database Config ewy44aEVAiOk2kd3
+	clientOptions := options.Client().ApplyURI("mongodb+srv://user:ewy44aEVAiOk2kd3@cluster0.5hlas.gcp.mongodb.net/demo?retryWrites=true&w=majority")
 	client, err := mongo.NewClient(clientOptions)
 
 	//Set up a context required by mongo.Connect
@@ -30,7 +30,8 @@ func Connect() {
 	} else {
 		log.Println("Connected!")
 	}
-	db := client.Database("go_mongo")
-	controllers.EntriesCollection(db)
+	db := client.Database("demo")
+	controllers.ThreadsCollection(db)
+	controllers.CommentsCollection(db)
 	return
 }
