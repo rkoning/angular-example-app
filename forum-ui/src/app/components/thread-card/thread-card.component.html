@@ -1,5 +1,5 @@
-<mat-card (click)="openThread(thread)">
-  <mat-card-header>
+<mat-card>
+  <mat-card-header (click)="openThread(thread)">
     <mat-card-title>{{thread.title}}</mat-card-title>
     <mat-card-subtitle>{{thread.userId}}</mat-card-subtitle>
   </mat-card-header>

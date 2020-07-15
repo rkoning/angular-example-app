@@ -1,10 +1,14 @@
-<p>forum works!</p>
-
-<div>
-  <div *ngFor="let thread of threads">
-    <app-thread-card [thread]="thread"></app-thread-card>
+<div class="centered main">
+  <div class="margin-bottom">
+    <h1 class="padded">Angular Reactive Forum Example</h1>
+    <button class="mat-raised-button mat-primary" 
+      (click)="openAddThreadDialog()">Create Thread</button>
   </div>
+    
+  <div>
+    <div *ngFor="let thread of threads">
+      <app-thread-card [thread]="thread"></app-thread-card>
+    </div>
+  </div>
+  
 </div>
-
-<button class="mat-raised-button mat-primary" 
-  (click)="openAddThreadDialog()">New Thread</button>

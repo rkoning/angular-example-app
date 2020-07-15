@@ -29,8 +29,7 @@ export class ThreadFormComponent implements OnInit {
   public addThread = (): void => {
     if (this.threadForm.valid) {
       const thread = this.threadForm.value as Thread;
-      this.threadRoutes.add(thread).subscribe((res) => {
-        this.threadService.addThread(res.data);
+      this.threadService.addThread(thread).subscribe((res) => {
         this.snackBar.open('Thread posted!', 'Ok', { duration: 3000 });
       }, (err) => {
         console.log(err);

@@ -2,9 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Comment } from '@models/comment.model';
-import { CommentService } from '@services/comment.service';
-import { CommentRoutesService } from '@routes/comment-routes.service';
 import { ThreadRoutesService } from '@routes/thread-routes.service';
+import { ThreadService } from '@services/thread.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -20,7 +19,7 @@ export class CommentFormComponent implements OnInit {
   });
 
 
-  constructor(private commentService: CommentService, private threadRoutes: ThreadRoutesService, private snackBar: MatSnackBar) { }
+  constructor(private threadService: ThreadService, private threadRoutes: ThreadRoutesService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -29,8 +28,9 @@ export class CommentFormComponent implements OnInit {
     if (this.form.valid) {
       const comment = this.form.value as Comment;
       comment.parentId = this.threadId;
-      this.threadRoutes.addComment(this.threadId, comment).subscribe((res) => {
-        this.commentService.addComment(comment);
+      comment.id = undefined;
+      console.log(comment);
+      this.threadService.addComment(this.threadId, comment).subscribe((res) => {
         this.snackBar.open('Comment posted!', 'Ok', { duration: 3000 });
       }, (err) => {
         console.log(err);

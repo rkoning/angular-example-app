@@ -1,20 +1,17 @@
-
-<mat-card *ngIf="thread !== undefined">
-  <mat-card-header>
-    <mat-card-title>{{thread.title}}</mat-card-title>
-    <mat-card-subtitle>{{thread.userId}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    {{thread.text}}
-  </mat-card-content>
-</mat-card>
-<button class="mat-raised-button mat-button-base mat-primary float-right" (click)="showCommentForm = true">Comment</button>
-<app-comment-form *ngIf="thread !== undefined && showCommentForm" [threadId]="thread.id"></app-comment-form>
-
-<div class="full-size">
-  <div class="center">
-    <mat-spinner *ngIf="showSpinner"></mat-spinner>
-  </div>
+<div class="thread-heading">
+  <button class="mat-raised-button mat-button-base mat-warn right" (click)="deleteThread()">Delete Thread</button>
+  <h2 mat-dialog-title>{{thread.title}}
+  </h2>
+  <span class="username">{{thread.userId}}</span>
 </div>
+<mat-dialog-content class="mat-typography thread-dialog">
+  <div class="margin-bottom">
+    <div class="thread-content">
+      {{thread.text}}
+    </div>
+  </div>
 
-<app-comment *ngFor="let comment of comments" [comment]=comment></app-comment>
+  <app-comment-form *ngIf="thread !== undefined" [threadId]="thread.id"></app-comment-form>
+  
+  <app-comment *ngFor="let comment of comments" [comment]=comment></app-comment>
+</mat-dialog-content>

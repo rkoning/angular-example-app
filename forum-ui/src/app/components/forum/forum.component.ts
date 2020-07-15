@@ -3,8 +3,6 @@ import { ThreadService } from '@services/thread.service';
 import { Thread } from '@models/thread.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ThreadFormComponent } from '../thread-form/thread-form.component';
-import { ThreadRoutesService } from '@routes/thread-routes.service';
-import { ThreadComponent } from '../thread/thread.component';
 
 @Component({
   selector: 'app-forum',
@@ -15,16 +13,14 @@ export class ForumComponent implements OnInit {
 
   public threads: Thread[] = [];
 
-  constructor(private threadService: ThreadService, public threadRoutes: ThreadRoutesService, public dialog: MatDialog) { }
+  constructor(private threadService: ThreadService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.threadService.Threads.subscribe((threads) => {
+      console.log(threads);
       this.threads = threads;
     });
-
-    this.threadRoutes.list().subscribe((res) => {
-      this.threadService.setThreads(res.data);
-    });
+    this.threadService.listThreads().subscribe((res) => {});
   }
 
   public openAddThreadDialog = (): void => {

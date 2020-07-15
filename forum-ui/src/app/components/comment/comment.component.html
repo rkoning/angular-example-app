@@ -2,6 +2,7 @@
   <mat-card-header>
     <mat-card-subtitle>{{comment.userId}}</mat-card-subtitle>
   </mat-card-header>
+  <button class="mat-raised-button mat-button-base mat-warn right" (click)="deleteComment()">Delete Comment</button>
   <mat-card-content>
     {{comment.text}}
   </mat-card-content>

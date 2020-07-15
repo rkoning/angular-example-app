@@ -22,5 +22,6 @@ export class ThreadCardComponent implements OnInit {
     const threadDialog = this.dialog.open(ThreadComponent);
     const instance = threadDialog.componentInstance;
     instance.thread = this.thread;
+    instance.ngOnInit();
   }
 }
