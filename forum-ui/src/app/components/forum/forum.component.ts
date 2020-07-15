@@ -4,6 +4,7 @@ import { Thread } from '@models/thread.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ThreadFormComponent } from '../thread-form/thread-form.component';
 import { ThreadRoutesService } from '@routes/thread-routes.service';
+import { ThreadComponent } from '../thread/thread.component';
 
 @Component({
   selector: 'app-forum',
@@ -29,5 +30,4 @@ export class ForumComponent implements OnInit {
   public openAddThreadDialog = (): void => {
     const threadDialog = this.dialog.open(ThreadFormComponent);
   }
-
 }

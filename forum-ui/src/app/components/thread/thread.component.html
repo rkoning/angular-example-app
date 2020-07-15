@@ -2,17 +2,19 @@
 <mat-card *ngIf="thread !== undefined">
   <mat-card-header>
     <mat-card-title>{{thread.title}}</mat-card-title>
-    <mat-card-subtitle>{{thread.user}}</mat-card-subtitle>
+    <mat-card-subtitle>{{thread.userId}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     {{thread.text}}
   </mat-card-content>
 </mat-card>
+<button class="mat-raised-button mat-button-base mat-primary float-right" (click)="showCommentForm = true">Comment</button>
+<app-comment-form *ngIf="thread !== undefined && showCommentForm" [threadId]="thread.id"></app-comment-form>
 
-<mat-spinner *ngIf="showSpinner"></mat-spinner>
-<mat-list>
-  <mat-list-item *ngFor="let comment of comments">
-    A Comment
-  </mat-list-item>
-</mat-list>
+<div class="full-size">
+  <div class="center">
+    <mat-spinner *ngIf="showSpinner"></mat-spinner>
+  </div>
+</div>
 
+<app-comment *ngFor="let comment of comments" [comment]=comment></app-comment>

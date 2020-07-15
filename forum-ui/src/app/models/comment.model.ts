@@ -1,6 +1,6 @@
 export class Comment {
   id: string;
-  user: string;
+  userId: string;
   parentId: string;
   text: string;
 }

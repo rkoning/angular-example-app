@@ -1,12 +1,12 @@
 export class Thread {
   id: string;
-  user: string;
+  userId: string;
   title: string;
   text: string;
 
-  constructor(id, user, title, text) {
+  constructor(id, userId, title, text) {
     this.id = id;
-    this.user = user;
+    this.userId = userId;
     this.title = title;
     this.text = text;
   }

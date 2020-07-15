@@ -14,7 +14,7 @@ import { ThreadRoutesService } from '@routes/thread-routes.service';
 export class ThreadFormComponent implements OnInit {
 
   threadForm = new FormGroup({
-    user: new FormControl('', Validators.required),
+    userId: new FormControl('', Validators.required),
     title: new FormControl('', Validators.required),
     text: new FormControl('', Validators.required),
   });
@@ -30,12 +30,12 @@ export class ThreadFormComponent implements OnInit {
     if (this.threadForm.valid) {
       const thread = this.threadForm.value as Thread;
       this.threadRoutes.add(thread).subscribe((res) => {
-        console.log(res);
         this.threadService.addThread(res.data);
+        this.snackBar.open('Thread posted!', 'Ok', { duration: 3000 });
       }, (err) => {
         console.log(err);
+        this.snackBar.open('Error posting thread, try again later', 'Ok', { duration: 3000 });
       });
-      this.snackBar.open('Thread posted!', 'Ok', { duration: 3000 });
       this.dialog.closeAll();
     } else {
       this.snackBar.open('Invalid thread', 'Ok', { duration: 3000 });

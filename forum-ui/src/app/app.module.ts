@@ -20,6 +20,7 @@ import { ThreadComponent } from './components/thread/thread.component';
 import { ThreadFormComponent } from './components/thread-form/thread-form.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { ThreadCardComponent } from './components/thread-card/thread-card.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ThreadCardComponent } from './components/thread-card/thread-card.compon
     ThreadComponent,
     CommentComponent,
     ThreadFormComponent,
-    ThreadCardComponent
+    ThreadCardComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,

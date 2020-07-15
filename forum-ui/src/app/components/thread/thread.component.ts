@@ -3,6 +3,9 @@ import { Thread } from '@models/thread.model';
 import { ThreadRoutesService } from '@routes/thread-routes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ThreadService } from '@services/thread.service';
+import { CommentRoutesService } from '@routes/comment-routes.service';
+import { CommentService } from '@services/comment.service';
+import { Comment } from '@models/comment.model';
 
 @Component({
   selector: 'app-thread',
@@ -14,17 +17,17 @@ export class ThreadComponent implements OnInit {
 
   public comments: Comment[];
   public showSpinner = true;
-  constructor(private route: ActivatedRoute, private threadService: ThreadService, private threadRoutesService: ThreadRoutesService) { }
+  public showCommentForm = false;
+
+  constructor(private route: ActivatedRoute, private commentService: CommentService,
+              private commentRoutes: CommentRoutesService, private threadService: ThreadService,
+              private threadRoutesService: ThreadRoutesService) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.thread = this.threadService.getThreadById(id);
-    console.log(this.thread);
-    this.threadRoutesService.getComments(id).subscribe((res) => {
-
-    });
-    setTimeout(() => {
+    this.commentService.Comments.subscribe((comments) => this.comments = comments);
+    this.threadRoutesService.getComments(this.thread.id).subscribe((res) => {
+      this.commentService.setComments(res.data);
       this.showSpinner = false;
-    }, 3000);
+    });
   }
 }

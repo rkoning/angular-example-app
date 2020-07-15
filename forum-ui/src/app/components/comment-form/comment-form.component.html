@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <mat-form-field class="full-width">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="userId">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Content</mat-label>
+    <textarea formControlName="text" matInput></textarea>
+  </mat-form-field>
+  <button class="mat-raised-button mat-button-base" [mat-dialog-close]="true">Cancel</button>
+  <button class="mat-raised-button mat-button-base mat-primary" (click)="addComment()">Post</button>
+</form>
