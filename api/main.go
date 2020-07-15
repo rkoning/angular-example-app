@@ -21,10 +21,11 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
+
 	"rkoning/angular-example-app/api/config"
 	"rkoning/angular-example-app/api/routes"
 
-	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -43,7 +44,9 @@ func main() {
 	r.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", fs))
 	r.PathPrefix("/swagger").Handler(http.StripPrefix("/swagger/", fs))
 
-	cors := handlers.AllowedOrigins([]string{"*"})
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
+	originsOk := handlers.AllowedOrigins([]string{"*"})
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 
-	log.Fatal(http.ListenAndServe(":10000", handlers.CORS(cors)(r)))
+	log.Fatal(http.ListenAndServe(":10000", handlers.CORS(originsOk, headersOk, methodsOk)(r)))
 }
