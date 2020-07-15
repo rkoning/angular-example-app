@@ -12,6 +12,10 @@ export class ThreadService {
 
   constructor() { }
 
+  public setThreads = (threads: Thread[]): void => {
+    this.threads.next(threads);
+  }
+
   public addThread = (thread: Thread): void => {
     const threads = this.threads.value;
     thread.id = threads.length.toString();

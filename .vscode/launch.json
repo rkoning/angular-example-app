@@ -5,6 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "UI Debug",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/#",
+            "webRoot": "${workspaceFolder}",
+            "sourceMapPathOverrides": {
+                "webpack:/*": "${webRoot}/*",
+                "webpack:/./*": "${webRoot}/*",
+                "webpack:/src/*": "${webRoot}/src/*",
+                "webpack:/./~/*": "${webRoot}/node_modules/*"
+            },
+        },
+        {
             "name": "Launch Api",
             "type": "go",
             "request": "launch",

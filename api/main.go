@@ -24,6 +24,7 @@ import (
 	"rkoning/angular-example-app/api/config"
 	"rkoning/angular-example-app/api/routes"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -42,5 +43,7 @@ func main() {
 	r.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", fs))
 	r.PathPrefix("/swagger").Handler(http.StripPrefix("/swagger/", fs))
 
-	log.Fatal(http.ListenAndServe(":10000", r))
+	cors := handlers.AllowedOrigins([]string{"*"})
+
+	log.Fatal(http.ListenAndServe(":10000", handlers.CORS(cors)(r)))
 }

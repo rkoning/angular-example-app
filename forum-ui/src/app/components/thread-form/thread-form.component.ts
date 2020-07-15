@@ -4,6 +4,7 @@ import { Thread } from '@models/thread.model';
 import { ThreadService } from '@services/thread.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { ThreadRoutesService } from '@routes/thread-routes.service';
 
 @Component({
   selector: 'app-thread-form',
@@ -18,7 +19,8 @@ export class ThreadFormComponent implements OnInit {
     text: new FormControl('', Validators.required),
   });
 
-  constructor(private threadService: ThreadService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
+  constructor(private threadService: ThreadService, private threadRoutes: ThreadRoutesService,
+              private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -27,7 +29,12 @@ export class ThreadFormComponent implements OnInit {
   public addThread = (): void => {
     if (this.threadForm.valid) {
       const thread = this.threadForm.value as Thread;
-      this.threadService.addThread(thread);
+      this.threadRoutes.add(thread).subscribe((res) => {
+        console.log(res);
+        this.threadService.addThread(res.data);
+      }, (err) => {
+        console.log(err);
+      });
       this.snackBar.open('Thread posted!', 'Ok', { duration: 3000 });
       this.dialog.closeAll();
     } else {
