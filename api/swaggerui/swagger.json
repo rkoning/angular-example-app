@@ -1,0 +1,192 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "Basic Message Board API.",
+    "contact": {
+      "name": "Joel Gilbert",
+      "email": "youwish@email.com"
+    },
+    "version": "1.0.0"
+  },
+  "host": "localhost:10000",
+  "paths": {
+    "/threads": {
+      "get": {
+        "tags": [
+          "threads"
+        ],
+        "summary": "Return thread.",
+        "operationId": "getThreads",
+        "responses": {
+          "200": {
+            "schema": {
+              "data": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "threads"
+        ],
+        "summary": "Return thread.",
+        "operationId": "createThread",
+        "parameters": [
+          {
+            "description": "comment to add to the thread",
+            "name": "comment",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/thread"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "data": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/threads/{id}": {
+      "delete": {
+        "tags": [
+          "threads"
+        ],
+        "summary": "Return deleted result",
+        "operationId": "deleteThread",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "id of the thread",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "data": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/threads/{id}/comments": {
+      "get": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Return comments for thread.",
+        "operationId": "getComments",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "id of the thread",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "data": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Create Comment",
+        "operationId": "createComment",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "id of the thread",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "comment to add to the thread",
+            "name": "comment",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/comment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "data": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "comments"
+        ],
+        "summary": "Return comments for thread.",
+        "operationId": "deleteComment",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "id of the thread",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "data": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ObjectID": {
+      "type": "array",
+      "title": "ObjectID is the BSON ObjectID type.",
+      "items": {
+        "type": "integer",
+        "format": "uint8"
+      },
+      "x-go-package": "go.mongodb.org/mongo-driver/bson/primitive"
+    }
+  }
+}
