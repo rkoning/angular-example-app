@@ -32,6 +32,7 @@ func Routes(r *mux.Router) {
 	//       "data":
 	//         "type": object
 	r.HandleFunc("/threads", controllers.GetAllThreads).Methods("GET").Schemes("http")
+	r.HandleFunc("/threads/{id}", controllers.GetThread).Methods("GET").Schemes("http")
 	// swagger:operation POST /threads/{id}/comments comments createComment
 	// ---
 	// summary: Create Comment

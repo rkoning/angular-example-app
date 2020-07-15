@@ -107,6 +107,30 @@ func GetAllThreads(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
+// GetThread gets thread
+func GetThread(w http.ResponseWriter, r *http.Request) {
+	var thread Thread
+
+	cursor := threadCollection.FindOne(context.TODO(), bson.M{})
+
+	// Iterate through the returned cursor.
+
+	cursor.Decode(&thread)
+
+	json := simplejson.New()
+	json.Set("data", thread)
+
+	payload, err := json.MarshalJSON()
+	if err != nil {
+		log.Println(err)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(payload)
+	return
+}
+
 // GetAllCommentsForThread Get Handler
 func GetAllCommentsForThread(w http.ResponseWriter, r *http.Request) {
 	threadID := mux.Vars(r)["id"]
