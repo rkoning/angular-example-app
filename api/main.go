@@ -1,3 +1,20 @@
+// Basic Message Board API.
+//
+//
+// Terms Of Service:
+//
+//     Schemes: http
+//     Host: localhost:10000
+//     Version: 1.0.0
+//     Contact: Joel Gilbert<youwish@email.com>
+//
+//     Consumes:
+//     - application/json
+//
+//     Produces:
+//     - application/json
+//
+// swagger:meta
 package main
 
 import (
@@ -20,6 +37,10 @@ func main() {
 
 	// Route Handlers / Endpoints
 	routes.Routes(r)
+
+	fs := http.FileServer(http.Dir("./swaggerui"))
+	r.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", fs))
+	r.PathPrefix("/swagger").Handler(http.StripPrefix("/swagger/", fs))
 
 	log.Fatal(http.ListenAndServe(":10000", r))
 }

@@ -15,16 +15,43 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-// Thread is a main thread
+// Thread represents a thread
+//
+// A Thread is the main component in this application
+//
+// A thread can have as many comments as the users add
+//
+// swagger:parameters thread
 type Thread struct {
-	ID        *primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Title     string              `bson:"title,omitempty" json:"title"`
-	Text      string              `bson:"text,omitempty" json:"text"`
-	UserID    string              `bson:"userId,omitempty" json:"userId"`
-	Timestamp int64               `bson:"timestamp,omitempty" json:"timestamp"`
+	// the id
+	//
+	// required: true
+	// min: 1
+	ID *primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	// the title
+	//
+	// required: true
+	// min: 1
+	Title string `bson:"title,omitempty" json:"title"`
+	// the text
+	//
+	// required: true
+	// min: 1
+	Text string `bson:"text,omitempty" json:"text"`
+	// the id for this user
+	//
+	// required: true
+	// min: 1
+	UserID string `bson:"userId,omitempty" json:"userId"`
+	// the time in unix the thread was submitted
+	//
+	// required: true
+	// min: 1
+	Timestamp int64 `bson:"timestamp,omitempty" json:"timestamp"`
 }
 
-// Comment is a reply to the Thread
+// Comment request model
+// swagger:parameters comment
 type Comment struct {
 	ID        *primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	UserID    string              `bson:"userId,omitempty" json:"userId"`
@@ -134,7 +161,7 @@ func AddThreadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusCreated)
 	w.Write(Payload(result))
 	return
 }
@@ -161,7 +188,7 @@ func AddCommentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusCreated)
 	w.Write(Payload(result))
 	return
 }
