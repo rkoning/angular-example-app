@@ -10,11 +10,12 @@ import { mergeMap, catchError } from 'rxjs/operators';
 })
 export class ThreadService {
 
-  private threads = new BehaviorSubject<Thread[]>([]);
-  Threads = this.threads.asObservable();
 
   private comments = new BehaviorSubject<Comment[]>([]);
   Comments = this.comments.asObservable();
+
+  private threads = new BehaviorSubject<Thread[]>([]);
+  Threads = this.threads.asObservable();
 
   constructor(private threadRoutesService: ThreadRoutesService) { }
 
