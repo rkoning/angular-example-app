@@ -18,8 +18,9 @@ export class ThreadRoutesService extends BaseRoutesService<Thread> {
     return this.http.get<JsonResponse<Comment[]>>(`${this.apiRoot}/${this.baseRoute}/${id}/comments`).pipe(take(1));
   }
 
-  public addComment(id: string, data: Comment): Observable<any> {
-    return this.http.post<any>(`${this.apiRoot}/${this.baseRoute}/${id}/comments`, data).pipe(take(1));
+  public addComment(id: string, data: Comment): Observable<JsonResponse<{ insertedID: string }>> {
+    return this.http.post<JsonResponse<{ insertedID: string }>>(`${this.apiRoot}/${this.baseRoute}/${id}/comments`, data)
+      .pipe(take(1));
   }
 
   public deleteComment(threadId: string, commentId: string): Observable<JsonResponse<Comment>> {

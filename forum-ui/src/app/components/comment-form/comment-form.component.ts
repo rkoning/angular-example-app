@@ -29,7 +29,6 @@ export class CommentFormComponent implements OnInit {
       const comment = this.form.value as Comment;
       comment.parentId = this.threadId;
       comment.id = undefined;
-      console.log(comment);
       this.threadService.addComment(this.threadId, comment).subscribe((res) => {
         this.snackBar.open('Comment posted!', 'Ok', { duration: 3000 });
       }, (err) => {
@@ -40,5 +39,4 @@ export class CommentFormComponent implements OnInit {
       this.snackBar.open('Invalid comment', undefined, {duration: 3000});
     }
   }
-
 }

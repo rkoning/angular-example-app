@@ -18,7 +18,9 @@ export class ThreadComponent implements OnInit {
   constructor(private threadService: ThreadService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.threadService.Comments.subscribe((comments) => this.comments = comments);
+    this.threadService.Comments.subscribe((comments) => {
+      this.comments = comments;
+    });
     this.threadService.getThreadComments(this.thread.id).subscribe((res) => {});
   }
 

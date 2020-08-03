@@ -15,7 +15,6 @@ export class ThreadCardComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    console.log(this.thread);
   }
 
   public openThread = (thread: Thread): void => {
