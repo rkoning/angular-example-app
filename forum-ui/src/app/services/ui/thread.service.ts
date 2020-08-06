@@ -74,7 +74,7 @@ export class ThreadService {
     return this.threadRoutesService.addComment(threadId, comment).pipe(
       mergeMap((res) => {
         const comments = this.comments.value;
-        comment.id = res.data.insertedID;
+        comment.id = res.data.InsertedID;
         comments.push(comment);
         this.comments.next(comments);
         return of(comment);
