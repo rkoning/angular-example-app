@@ -9,13 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:4200/#",
-            "webRoot": "${workspaceFolder}",
-            "sourceMapPathOverrides": {
-                "webpack:/*": "${webRoot}/*",
-                "webpack:/./*": "${webRoot}/*",
-                "webpack:/src/*": "${webRoot}/src/*",
-                "webpack:/./~/*": "${webRoot}/node_modules/*"
-            },
+            "webRoot": "${workspaceFolder}/forum-ui",
         },
         {
             "name": "Launch Api",

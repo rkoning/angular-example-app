@@ -17,7 +17,6 @@ export class ForumComponent implements OnInit {
 
   ngOnInit(): void {
     this.threadService.Threads.subscribe((threads) => {
-      console.log(threads);
       this.threads = threads;
     });
     this.threadService.listThreads().subscribe((res) => {});
