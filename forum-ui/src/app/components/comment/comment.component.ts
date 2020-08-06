@@ -16,6 +16,6 @@ export class CommentComponent implements OnInit {
   }
 
   public deleteComment = (): void => {
-    this.threadService.deleteComment(this.comment.parentId, this.comment.id).subscribe((res) => {});
+    
   }
 }

@@ -26,15 +26,7 @@ export class CommentFormComponent implements OnInit {
 
   public addComment = (): void => {
     if (this.form.valid) {
-      const comment = this.form.value as Comment;
-      comment.parentId = this.threadId;
-      comment.id = undefined;
-      this.threadService.addComment(this.threadId, comment).subscribe((res) => {
-        this.snackBar.open('Comment posted!', 'Ok', { duration: 3000 });
-      }, (err) => {
-        console.log(err);
-        this.snackBar.open('Error posting comment, try again later', 'Ok', { duration: 3000 });
-      });
+
     } else {
       this.snackBar.open('Invalid comment', undefined, {duration: 3000});
     }

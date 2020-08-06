@@ -61,39 +61,14 @@ export class ThreadService {
   }
 
   public getThreadComments = (id: string): Observable<Comment[]> => {
-    return this.threadRoutesService.getComments(id).pipe(
-      mergeMap((res) => {
-        this.comments.next(res.data);
-        return of(res.data);
-      }),
-      catchError((err) => of(err))
-    );
+    return of([]);
   }
 
   public addComment = (threadId: string, comment: Comment): Observable<Comment> => {
-    return this.threadRoutesService.addComment(threadId, comment).pipe(
-      mergeMap((res) => {
-        const comments = this.comments.value;
-        comment.id = res.data.InsertedID;
-        comments.push(comment);
-        this.comments.next(comments);
-        return of(comment);
-      }),
-      catchError((err) => of(err))
-    );
+    return of(new Comment(undefined, undefined, undefined, undefined));
   }
 
   public deleteComment = (threadId: string, commentId: string): Observable<Comment> => {
-    return this.threadRoutesService.deleteComment(threadId, commentId).pipe(
-      mergeMap((res) => {
-        const comments = this.comments.value;
-        const idx = comments.findIndex((comment) => comment.id === commentId);
-        const removed = comments[idx];
-        comments.splice(idx, 1);
-        this.comments.next(comments);
-        return of(res.data);
-      }),
-      catchError((err) => of(err))
-    );
+    return of(new Comment(undefined, undefined, undefined, undefined));
   }
 }
