@@ -22,8 +22,8 @@ export class BaseRoutesService<T> {
     return this.http.get<JsonResponse<T[]>>(`${this.apiRoot}/${this.baseRoute}`).pipe(take(1));
   }
 
-  public add(jsonBody: Partial<T>): Observable<any> {
-    return this.http.post<any>(`${this.apiRoot}/${this.baseRoute}`, jsonBody).pipe(take(1));
+  public add(jsonBody: Partial<T>): Observable<JsonResponse<{InsertedID: string}>> {
+    return this.http.post<JsonResponse<{ InsertedID: string }>>(`${this.apiRoot}/${this.baseRoute}`, jsonBody).pipe(take(1));
   }
 
   public update(jsonBody: Partial<T>): Observable<JsonResponse<T>> {

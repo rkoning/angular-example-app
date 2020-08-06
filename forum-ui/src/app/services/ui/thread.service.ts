@@ -33,7 +33,7 @@ export class ThreadService {
     return this.threadRoutesService.add(thread).pipe(
       mergeMap((res) => {
         const threads = this.threads.value;
-        thread.id = res.data.insertedID;
+        thread.id = res.data.InsertedID;
         threads.push(thread);
         this.threads.next(threads);
         return of(thread);
